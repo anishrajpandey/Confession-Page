@@ -88,7 +88,7 @@ export default Admin;
 export async function getServerSideProps() {
   return {
     props: {
-      apiEndpoint: process.env.POST_API_ENDPIONT,
+      apiEndpoint: process.env.POST_API_ENDPOINT,
       updateApiEndpoint: process.env.UPDATE_API_ENDPOINT,
       at:process.env.ACCESS_TOKEN
     },

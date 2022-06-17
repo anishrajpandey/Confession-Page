@@ -1,7 +1,6 @@
 import { toJpeg, toPng } from "html-to-image";
 import { useRef, useEffect, useState } from "react";
 
-let API_ENDPOINT = process.env.POST_API_ENDPIONT;
 export default function Home({ apiEndpoint }) {
   const element = useRef();
   const element2 = useRef();
@@ -80,10 +79,9 @@ export default function Home({ apiEndpoint }) {
 }
 //
 export async function getServerSideProps() {
-  console.log(process.env.POST_API_ENDPIONT);
   return {
     props: {
-      apiEndpoint: process.env.POST_API_ENDPIONT,
+      apiEndpoint: process.env.POST_API_ENDPOINT,
     },
   };
 }
