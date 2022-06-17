@@ -63,7 +63,7 @@ const Admin = ({ apiEndpoint, updateApiEndpoint,at }) => {
        
         return (
           true
-         //todo elem.isPending
+         //todo elem.isPending 
           && 
           <div key={elem._id} id={elem._id}>
             <Image
@@ -94,3 +94,4 @@ export async function getServerSideProps() {
     },
   };
 }
+// hello
