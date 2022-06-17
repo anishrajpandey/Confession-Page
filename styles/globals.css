@@ -14,3 +14,88 @@ a {
 * {
   box-sizing: border-box;
 }
+h1 {
+  text-align: center;
+  font-family: "Anek Latin", sans-serif;
+  font-size: 40px;
+}
+#textarea {
+  margin: 50px auto;
+  display: block;
+
+  resize: none;
+  height: 200px;
+  width: 80%;
+  font-size: 1.8em;
+  padding: 1.3rem;
+}
+#file {
+  visibility: hidden;
+}
+canvas {
+  border: 3px solid black;
+  margin: auto;
+  display: block;
+}
+label {
+  display: block;
+  font-size: 1.5rem;
+  font-family: sans-serif;
+  text-align: center;
+  color: gray;
+}
+button {
+  margin: auto;
+  width: 15rem;
+  height: 50px;
+  text-align: center;
+  font-weight: bold;
+  padding: 1rem;
+  display: block;
+  margin: auto;
+  background-color: blue;
+  color: wheat;
+  cursor: pointer;
+}
+h3 {
+  text-align: center;
+}
+/* ***************************** */
+.confessPost {
+  width: 50%;
+  position: relative;
+  min-height: 400px;
+  background-color: #aaa;
+}
+.confessPost .logo {
+  color: rgb(62, 62, 62);
+  position: absolute;
+  display: block;
+  /* background-color: blueviolet; */
+  bottom: -10px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.5;
+  font-size: 2rem;
+}
+.confessPost .textBox {
+  display: block;
+  width: 100%;
+  min-height: 400px;
+  font-size: 1.5rem;
+  padding: 1rem;
+  font-family: sans-serif;
+  resize: none;
+  padding-block-end: 2.5rem;
+}
+.confessPost .textBox:focus {
+  border: 0;
+  /* outline: 0; */
+}
+.main {
+  width: 100%;
+  height: 60vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

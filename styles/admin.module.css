@@ -1,0 +1,5 @@
+.buttonArea {
+  background-color: aqua;
+  display: flex;
+  width: 60%;
+}
