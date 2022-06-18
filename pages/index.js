@@ -1,22 +1,21 @@
-import {  toPng ,toJpeg} from "html-to-image";
+import { toPng, toJpeg } from "html-to-image";
 import { useRef, useState } from "react";
-import Image from 'next/image'
+import Image from "next/image";
 
 export default function Home({ apiEndpoint }) {
   const mainElement = useRef();
   const [ConfessText, setConfessText] = useState("Confess Here...");
-  const [Loading, setLoading] = useState(false)
-  const [ShowMessage, setShowMessage] = useState(false)
-
+  const [Loading, setLoading] = useState(false);
+  const [ShowMessage, setShowMessage] = useState(false);
 
   const handleSubmit = async () => {
-        let dataUrl = await toPng(mainElement.current);
+    let dataUrl = await toPng(mainElement.current);
 
     // ***********POSTING TO CLOUDINARY**************
-setLoading(true)
+    setLoading(true);
 
     let formData = new FormData();
-  
+
     formData.append("file", dataUrl);
     formData.append("upload_preset", "confess-uploads");
     let res = await fetch(
@@ -43,46 +42,57 @@ setLoading(true)
       },
     });
     console.log("posted to mongodb.....");
-    setLoading(false)
-    setShowMessage(true)
-    
+    setLoading(false);
+    setShowMessage(true);
   };
 
   return (
-    Loading ? <div className="loaderBox">
-      <Image src="/loader.gif" alt="Loading..." width="200" height="200"></Image>
-      <h2>POSTING....</h2>
-    </div>:
-    (<div className="container">
-      <h1>Gyanodaya confession Page</h1>
-
-      <div className="main">
-        <div
-          className="confessPost"
-          ref={mainElement}
-          style={{ width: "500px", fontSize: "1.5rem" }}
-        >
-          <span className="logo">@confessgyanodaya</span>
-          <div
-            type="text"
-            contentEditable={true}
-            suppressContentEditableWarning={true}
-            className="textBox"
-            onFocus={() => setConfessText("")}
-          >
-            {ConfessText}
+    <>
+      <div className="container">
+        <h1>Gyanodaya confession Page</h1>
+        {Loading ? (
+          <div className="loaderBox">
+            <Image
+              src="/loader.gif"
+              alt="Loading..."
+              width="200"
+              height="200"
+            ></Image>
+            <h2>POSTING....</h2>
           </div>
-        </div>
+        ) : (
+          <div className="main">
+            <div
+              className="confessPost"
+              ref={mainElement}
+              style={{ width: "500px", fontSize: "1.5rem" }}
+            >
+              <span className="logo">@confessgyanodaya</span>
+              <div
+                type="text"
+                contentEditable={true}
+                suppressContentEditableWarning={true}
+                className="textBox"
+                onFocus={() => setConfessText("")}
+              >
+                {ConfessText}
+              </div>
+            </div>
+          </div>
+        )}
+        <button onClick={handleSubmit} disabled={Loading}>
+          Submit
+        </button>
+        {/* {ShowMessage} && (
+        <div className="msgBox"> */}
+        {/* <p>
+            Request Successfully Sent. Your post will be published to instagram
+            once approved by the admin:|
+          </p> */}
+        {/* </div> */}
+        {/* ) */}
       </div>
-
-      {/* <button onClick={convertToPng}>Test Button</button> */}
-        <button onClick={handleSubmit}>Submit</button>
-        
-        <div className="msgBox">
-          <p>Request Successfully Sent. Your post will be published to instagram once approved by the admin</p>
-        </div>
-      </div>)
-    
+    </>
   );
 }
 //

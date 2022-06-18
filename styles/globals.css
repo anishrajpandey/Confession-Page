@@ -99,24 +99,24 @@ h3 {
   justify-content: center;
   align-items: center;
 }
-.loaderBox{
+.loaderBox {
   display: grid;
-  height: 100vh;
+  height: 60vh;
   width: 100vw;
   place-content: center;
+  /* background-color: red; */
 }
-.loaderBox h2{
+.loaderBox h2 {
   text-align: center;
 }
-.msgBox{
+.msgBox {
   position: absolute;
   bottom: 2rem;
-background-color: green;
-width: 80%;
-left: 10%;
-font-size: large;
-padding: 1rem;
-font-weight: normal;
-font-family: sans-serif;
-
+  background-color: green;
+  width: 80%;
+  left: 10%;
+  font-size: large;
+  padding: 1rem;
+  font-weight: normal;
+  font-family: sans-serif;
 }
