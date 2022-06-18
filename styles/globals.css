@@ -19,31 +19,7 @@ h1 {
   font-family: "Anek Latin", sans-serif;
   font-size: 40px;
 }
-#textarea {
-  margin: 50px auto;
-  display: block;
 
-  resize: none;
-  height: 200px;
-  width: 80%;
-  font-size: 1.8em;
-  padding: 1.3rem;
-}
-#file {
-  visibility: hidden;
-}
-canvas {
-  border: 3px solid black;
-  margin: auto;
-  display: block;
-}
-label {
-  display: block;
-  font-size: 1.5rem;
-  font-family: sans-serif;
-  text-align: center;
-  color: gray;
-}
 button {
   margin: auto;
   width: 15rem;
@@ -63,9 +39,9 @@ h3 {
 /* ***************************** */
 .confessPost {
   width: 50%;
-  position: relative;
   min-height: 400px;
   background-color: #aaa;
+  position: relative;
 }
 .confessPost .logo {
   color: rgb(62, 62, 62);
@@ -82,12 +58,15 @@ h3 {
   display: block;
   width: 100%;
   min-height: 400px;
+  height: min-content;
+
   font-size: 1.5rem;
   padding: 1rem;
   font-family: sans-serif;
   resize: none;
   padding-block-end: 2.5rem;
 }
+
 .confessPost .textBox:focus {
   border: 0;
   /* outline: 0; */
@@ -110,13 +89,44 @@ h3 {
   text-align: center;
 }
 .msgBox {
-  position: absolute;
-  bottom: 2rem;
-  background-color: green;
+  position: relative;
+  bottom: 1.5rem;
+  background-color: rgb(4, 255, 4);
   width: 80%;
   left: 10%;
-  font-size: large;
+  font-size: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  border-radius: 1rem;
   padding: 1rem;
   font-weight: normal;
   font-family: sans-serif;
+  overflow: hidden;
+}
+.msgBox span {
+  font-size: 3rem;
+  font-weight: bolder;
+  display: inline-block;
+  aspect-ratio: 1/1;
+  border-radius: 100%;
+  width: 5rem;
+  display: inline-grid;
+  place-content: center;
+}
+.msgBox::before {
+  content: "";
+  width: 100%;
+  height: 4px;
+  background-color: rgb(0, 0, 0);
+  position: absolute;
+  bottom: 0;
+  transform: translateX(-100%);
+  animation: load 5s ease-in-out forwards;
+}
+@keyframes load {
+  to {
+    transform: translateX(0);
+  }
 }

@@ -44,6 +44,9 @@ export default function Home({ apiEndpoint }) {
     console.log("posted to mongodb.....");
     setLoading(false);
     setShowMessage(true);
+    setTimeout(() => {
+      setShowMessage(false);
+    }, 5000);
   };
 
   return (
@@ -80,22 +83,25 @@ export default function Home({ apiEndpoint }) {
             </div>
           </div>
         )}
+
         <button onClick={handleSubmit} disabled={Loading}>
           Submit
         </button>
-        {/* {ShowMessage} && (
-        <div className="msgBox"> */}
-        {/* <p>
-            Request Successfully Sent. Your post will be published to instagram
-            once approved by the admin:|
-          </p> */}
-        {/* </div> */}
-        {/* ) */}
+
+        {ShowMessage && (
+          <div className="msgBox">
+            <span>&#10003;</span>{" "}
+            <p>
+              Request Successfully Sent. Your post will be published to
+              instagram once approved by the admin
+            </p>
+          </div>
+        )}
       </div>
     </>
   );
 }
-//
+
 export async function getServerSideProps() {
   return {
     props: {
