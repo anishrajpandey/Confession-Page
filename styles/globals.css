@@ -69,7 +69,6 @@ h3 {
 
 .confessPost .textBox:focus {
   border: 0;
-  /* outline: 0; */
 }
 .main {
   width: 100%;
