@@ -1,10 +1,12 @@
 import {  toPng ,toJpeg} from "html-to-image";
-import { useRef, useEffect, useState } from "react";
+import { useRef, useState } from "react";
+import Image from 'next/image'
 
 export default function Home({ apiEndpoint }) {
   const mainElement = useRef();
   const [ConfessText, setConfessText] = useState("Confess Here...");
   const [Loading, setLoading] = useState(false)
+  const [ShowMessage, setShowMessage] = useState(false)
 
 
   const handleSubmit = async () => {
@@ -40,14 +42,17 @@ setLoading(true)
         "Content-Type": "application/json",
       },
     });
-    let responseFromMongoDB = await data.json();
     console.log("posted to mongodb.....");
-setLoading(false)
+    setLoading(false)
+    setShowMessage(true)
     
   };
 
   return (
-    Loading?"Loading":
+    Loading ? <div className="loaderBox">
+      <Image src="/loader.gif" alt="Loading..." width="200" height="200"></Image>
+      <h2>POSTING....</h2>
+    </div>:
     (<div className="container">
       <h1>Gyanodaya confession Page</h1>
 
@@ -71,8 +76,13 @@ setLoading(false)
       </div>
 
       {/* <button onClick={convertToPng}>Test Button</button> */}
-      <button onClick={handleSubmit}>Submit</button>
-    </div>)
+        <button onClick={handleSubmit}>Submit</button>
+        
+        <div className="msgBox">
+          <p>Request Successfully Sent. Your post will be published to instagram once approved by the admin</p>
+        </div>
+      </div>)
+    
   );
 }
 //
