@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Home({ apiEndpoint }) {
   const mainElement = useRef();
-  const [ConfessText, setConfessText] = useState("Confess Here...");
+  const [ConfessText, setConfessText] = useState("Enter your message....");
   const [Loading, setLoading] = useState(false);
   const [ShowMessage, setShowMessage] = useState(false);
 
