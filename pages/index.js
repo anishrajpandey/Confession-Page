@@ -65,11 +65,7 @@ export default function Home({ apiEndpoint }) {
           </div>
         ) : (
           <div className="main">
-            <div
-              className="confessPost"
-              ref={mainElement}
-              style={{ width: "500px", fontSize: "1.5rem" }}
-            >
+            <div className="confessPost" ref={mainElement}>
               <span className="logo">@confessgyanodaya</span>
               <div
                 type="text"

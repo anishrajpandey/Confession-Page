@@ -21,8 +21,8 @@ h1 {
 }
 
 button {
-  margin: auto;
-  width: 15rem;
+  width: max(50%, 400px);
+  margin: 1rem auto;
   height: 50px;
   text-align: center;
   font-weight: bold;
@@ -38,7 +38,7 @@ h3 {
 }
 /* ***************************** */
 .confessPost {
-  width: 50%;
+  width: max(50%, 400px);
   min-height: 400px;
   background-color: #aaa;
   position: relative;
@@ -127,5 +127,11 @@ h3 {
 @keyframes load {
   to {
     transform: translateX(0);
+  }
+}
+@media (max-width: 400px) {
+  .confessPost,
+  button {
+    width: 100%;
   }
 }
