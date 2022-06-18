@@ -25,7 +25,6 @@ const Admin = ({ apiEndpoint, updateApiEndpoint,at }) => {
 
     //posting with media_id
     await fetch(`https://graph.facebook.com/v14.0/17841451771977639/media_publish?creation_id=${id}&access_token=${at}`,{method:'POST'})
-    console.log("Success")
   }
   const handleAccept = async(e) => {
     const id = e.target.parentElement.parentElement.id;
@@ -40,13 +39,13 @@ const Admin = ({ apiEndpoint, updateApiEndpoint,at }) => {
     });
     let { url} = await data.json();
     postToInstagram(url)
+    console.log("POSTED TO INSTAGRAM")
+
   };
   
   const handleReject = async (e) => {
     const id = e.target.parentElement.parentElement.id;
-    let body = {
-      id: "62ac3ddf299fab60def96898",
-    };
+
     let res = await fetch(updateApiEndpoint, {
       method: "POST",
       body: JSON.stringify({id: id }),
@@ -54,16 +53,16 @@ const Admin = ({ apiEndpoint, updateApiEndpoint,at }) => {
         "Content-Type": "application/json",
       },
     });
-    console.log("api request sent");
-    console.log(res);
+    console.log("REJECTED")
+ 
   };
   return (
     <main>
       {PostList.map((elem) => {
        
         return (
-          true
-         //todo elem.isPending 
+          
+         elem.isPending 
           && 
           <div key={elem._id} id={elem._id}>
             <Image
@@ -94,4 +93,3 @@ export async function getServerSideProps() {
     },
   };
 }
-  

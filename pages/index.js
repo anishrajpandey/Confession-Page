@@ -1,27 +1,22 @@
-import { toJpeg, toPng } from "html-to-image";
+import {  toPng ,toJpeg} from "html-to-image";
 import { useRef, useEffect, useState } from "react";
 
 export default function Home({ apiEndpoint }) {
-  const element = useRef();
-  const element2 = useRef();
+  const mainElement = useRef();
   const [ConfessText, setConfessText] = useState("Confess Here...");
-  // useEffect(() => {
-  async function convertToPng() {
-    let currentElement = element.current;
-    let dataUrl = await toPng(currentElement);
-    return dataUrl;
-  }
+  const [Loading, setLoading] = useState(false)
 
-  // }, []);
+
   const handleSubmit = async () => {
-    // ***********POSTING TO CLOUDINARY**************
+        let dataUrl = await toPng(mainElement.current);
 
-    console.log("Posting to cloudinary");
+    // ***********POSTING TO CLOUDINARY**************
+setLoading(true)
+
     let formData = new FormData();
-    let imageUrl = await convertToPng(); //dont know why convert to png returns promise instead of string
-    formData.append("file", imageUrl);
+  
+    formData.append("file", dataUrl);
     formData.append("upload_preset", "confess-uploads");
-    // console.log("url is", formData["file"]);
     let res = await fetch(
       "https://api.cloudinary.com/v1_1/ddlejmdqj/image/upload",
       {
@@ -46,35 +41,38 @@ export default function Home({ apiEndpoint }) {
       },
     });
     let responseFromMongoDB = await data.json();
-    console.log(responseFromMongoDB);
     console.log("posted to mongodb.....");
+setLoading(false)
+    
   };
 
   return (
-    <div className="container">
+    Loading?"Loading":
+    (<div className="container">
       <h1>Gyanodaya confession Page</h1>
 
       <div className="main">
         <div
           className="confessPost"
-          ref={element}
+          ref={mainElement}
           style={{ width: "500px", fontSize: "1.5rem" }}
         >
           <span className="logo">@confessgyanodaya</span>
           <div
             type="text"
             contentEditable={true}
+            suppressContentEditableWarning={true}
             className="textBox"
             onFocus={() => setConfessText("")}
           >
-            {/* {ConfessText} */}
+            {ConfessText}
           </div>
         </div>
       </div>
 
       {/* <button onClick={convertToPng}>Test Button</button> */}
       <button onClick={handleSubmit}>Submit</button>
-    </div>
+    </div>)
   );
 }
 //
