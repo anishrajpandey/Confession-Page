@@ -18,7 +18,8 @@ export default async function handler(req, res) {
     if (req.body.shouldReturnUrlAsAResponse) {
           const id = req.body.id;
       const response  = await pendingPosts.findOne({ _id: id })
-      res.status(200).json({url:response.imageURL})
+      res.status(200).json({ url: response.imageURL })
+      await pendingPosts.remove({ _id: id })
 
     }
   }
