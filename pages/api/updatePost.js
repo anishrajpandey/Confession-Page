@@ -16,11 +16,11 @@ export default async function handler(req, res) {
       { $set: { isPending: "false" } }
     );
     if (req.body.shouldReturnUrlAsAResponse) {
-          const id = req.body.id;
-      const response  = await pendingPosts.findOne({ _id: id })
-      res.status(200).json({ url: response.imageURL })
-      await pendingPosts.remove({ _id: id })
-
+      const id = req.body.id;
+      const response = await pendingPosts.findOne({ _id: id });
+      res.status(200).json({ url: response.imageURL });
+      await pendingPosts.remove({ _id: id });
     }
+    res.status(200).json({ message: "Request Successful" });
   }
 }

@@ -4,7 +4,7 @@ import Image from "next/image";
 
 export default function Home({ apiEndpoint }) {
   const mainElement = useRef();
-  const [ConfessText, setConfessText] = useState("Enter your message....");
+  const [ConfessText, setConfessText] = useState("Confess Here...");
   const [Loading, setLoading] = useState(false);
   const [ShowMessage, setShowMessage] = useState(false);
   const [SubmittedMessage, setSubmittedMessage] = useState("Submit");
@@ -82,16 +82,16 @@ export default function Home({ apiEndpoint }) {
             </div>
           </div>
         )}
-
-        <button
-          onClick={handleSubmit}
-          disabled={
-            Loading || (SubmittedMessage === "Submitted" ? true : false)
-          }
-        >
-          {SubmittedMessage}
-        </button>
-
+        {(SubmittedMessage !== "Submitted" ? true : false) && (
+          <button
+            onClick={handleSubmit}
+            disabled={
+              Loading || (SubmittedMessage === "Submitted" ? true : false)
+            }
+          >
+            {SubmittedMessage}
+          </button>
+        )}
         {ShowMessage && (
           <div className="msgBox">
             <span>&#10003;</span> <p>Submitted</p>

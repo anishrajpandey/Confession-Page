@@ -97,17 +97,17 @@ h3 {
 }
 .msgBox {
   position: relative;
-  bottom: 0;
+  bottom: -2rem;
   background-color: rgb(4, 255, 4);
-  width: 80%;
-  left: 10%;
+  width: 500px;
+  height: 70px;
+  left: 33.5%;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1rem;
-  border-radius: 1rem;
-  padding: 1rem;
+  border-radius: 0.8rem;
   font-weight: normal;
   font-family: sans-serif;
   overflow: hidden;
