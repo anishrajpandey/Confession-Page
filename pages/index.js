@@ -7,6 +7,7 @@ export default function Home({ apiEndpoint }) {
   const [ConfessText, setConfessText] = useState("Enter your message....");
   const [Loading, setLoading] = useState(false);
   const [ShowMessage, setShowMessage] = useState(false);
+  const [SubmittedMessage, setSubmittedMessage] = useState("Submit");
 
   const handleSubmit = async () => {
     let dataUrl = await toPng(mainElement.current);
@@ -42,11 +43,13 @@ export default function Home({ apiEndpoint }) {
       },
     });
     console.log("posted to mongodb.....");
+    setSubmittedMessage("Submitted");
     setLoading(false);
     setShowMessage(true);
     setTimeout(() => {
       setShowMessage(false);
-    }, 5000);
+      setSubmittedMessage("Submit");
+    }, 3000);
   };
 
   return (
@@ -80,17 +83,18 @@ export default function Home({ apiEndpoint }) {
           </div>
         )}
 
-        <button onClick={handleSubmit} disabled={Loading}>
-          Submit
+        <button
+          onClick={handleSubmit}
+          disabled={
+            Loading || (SubmittedMessage === "Submitted" ? true : false)
+          }
+        >
+          {SubmittedMessage}
         </button>
 
         {ShowMessage && (
           <div className="msgBox">
-            <span>&#10003;</span>{" "}
-            <p>
-              Request Successfully Sent. Your post will be published to
-              instagram once approved by the admin
-            </p>
+            <span>&#10003;</span> <p>Submitted</p>
           </div>
         )}
       </div>

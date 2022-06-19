@@ -49,12 +49,12 @@ h3 {
 .confessPost {
   width: max(30%, 400px);
   min-height: 400px;
-  background-color: #555;
+  background-color: #404040;
   color: white;
   position: relative;
 }
 .confessPost .logo {
-  color: rgb(160, 151, 151);
+  color: hsl(240, 30%, 61%);
   position: absolute;
   display: block;
   bottom: -10px;
@@ -62,8 +62,8 @@ h3 {
   transform: translate(-50%, -50%);
   opacity: 0.5;
   font-size: 2rem;
+
   font-family: "Love Ya Like A Sister", cursive;
-  font-family: "Catamaran", sans-serif;
 }
 .confessPost .textBox {
   display: block;
@@ -97,7 +97,7 @@ h3 {
 }
 .msgBox {
   position: relative;
-  bottom: 1.5rem;
+  bottom: 0;
   background-color: rgb(4, 255, 4);
   width: 80%;
   left: 10%;
@@ -129,7 +129,7 @@ h3 {
   position: absolute;
   bottom: 0;
   transform: translateX(-100%);
-  animation: load 5s ease-in-out forwards;
+  animation: load 3s ease-in-out forwards;
 }
 @keyframes load {
   to {
