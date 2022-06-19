@@ -70,12 +70,9 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
                   src={elem.imageURL}
                   width="500"
                   height={"600"}
-                  // layout={"fill"}
                   alt="Cannot Load Image"
-                  // loader={"/loader.gif"}
                 ></Image>
               </div>{" "}
-              {/* <span> {elem.isPending ? "True" : "False"}</span> */}
               <div className={styles.buttonArea}>
                 <button onClick={handleAccept}>Accept</button>
                 <button onClick={handleReject}>Reject</button>
