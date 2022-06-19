@@ -21,7 +21,7 @@ h1 {
 }
 
 button {
-  width: max(50%, 400px);
+  width: max(30%, 400px);
   height: 50px;
   text-align: center;
   font-weight: bold;
@@ -45,7 +45,7 @@ h3 {
 }
 /* ***************************** */
 .confessPost {
-  width: max(50%, 400px);
+  width: max(30%, 400px);
   min-height: 400px;
   background-color: #aaa;
   position: relative;
@@ -84,10 +84,9 @@ h3 {
 }
 .loaderBox {
   display: grid;
-  height: 60vh;
+  height: 57vh;
   width: 100vw;
   place-content: center;
-  /* background-color: red; */
 }
 .loaderBox h2 {
   text-align: center;
