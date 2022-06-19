@@ -66,7 +66,7 @@ export default function Home({ apiEndpoint }) {
         ) : (
           <div className="main">
             <div className="confessPost" ref={mainElement}>
-              <span className="logo">@confessgyanodaya</span>
+              <span className="logo">@confess_gyanodaya</span>
               <div
                 type="text"
                 contentEditable={true}

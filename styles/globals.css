@@ -1,4 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&family=Love+Ya+Like+A+Sister&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap");
+
 html,
 body {
   padding: 0;
@@ -53,7 +54,7 @@ h3 {
   position: relative;
 }
 .confessPost .logo {
-  color: rgb(227, 141, 141);
+  color: rgb(160, 151, 151);
   position: absolute;
   display: block;
   bottom: -10px;
@@ -61,16 +62,17 @@ h3 {
   transform: translate(-50%, -50%);
   opacity: 0.5;
   font-size: 2rem;
+  font-family: "Love Ya Like A Sister", cursive;
+  font-family: "Catamaran", sans-serif;
 }
 .confessPost .textBox {
   display: block;
   width: 100%;
   min-height: 400px;
   height: min-content;
-
-  font-size: 1.5rem;
+  letter-spacing: 0.5px;
+  font-size: 1.7rem;
   padding: 1rem;
-  font-family: sans-serif;
   padding-block-end: 2.5rem;
 }
 
@@ -113,7 +115,6 @@ h3 {
 .msgBox span {
   font-size: 3rem;
   font-weight: bolder;
-  display: inline-block;
   aspect-ratio: 1/1;
   border-radius: 100%;
   width: 5rem;
