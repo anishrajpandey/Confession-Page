@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&family=Love+Ya+Like+A+Sister&display=swap");
 html,
 body {
   padding: 0;
@@ -47,11 +48,12 @@ h3 {
 .confessPost {
   width: max(30%, 400px);
   min-height: 400px;
-  background-color: #aaa;
+  background-color: #555;
+  color: white;
   position: relative;
 }
 .confessPost .logo {
-  color: rgb(62, 62, 62);
+  color: rgb(227, 141, 141);
   position: absolute;
   display: block;
   bottom: -10px;

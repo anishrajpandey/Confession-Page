@@ -64,14 +64,18 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
       {PostList.map((elem) => {
         return (
           elem.isPending && (
-            <div key={elem._id} id={elem._id}>
-              <Image
-                src={elem.imageURL}
-                width={300}
-                height={300}
-                alt="Cannot Load Image"
-              ></Image>
-              <span> {elem.isPending ? "True" : "False"}</span>
+            <div key={elem._id} id={elem._id} className={styles.container}>
+              <div className={styles.imageContainer}>
+                <Image
+                  src={elem.imageURL}
+                  width="500"
+                  height={"600"}
+                  // layout={"fill"}
+                  alt="Cannot Load Image"
+                  // loader={"/loader.gif"}
+                ></Image>
+              </div>{" "}
+              {/* <span> {elem.isPending ? "True" : "False"}</span> */}
               <div className={styles.buttonArea}>
                 <button onClick={handleAccept}>Accept</button>
                 <button onClick={handleReject}>Reject</button>
