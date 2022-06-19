@@ -12,9 +12,7 @@
   display: flex;
   justify-content: center;
 }
-.imageContainer img {
-  /* object-fit: contain; */
-}
+
 .buttonArea {
   display: flex;
   width: max(20%, 500px);
