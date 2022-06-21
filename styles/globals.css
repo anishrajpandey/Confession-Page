@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Catamaran:wght@400;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
 
 html,
 body {
@@ -47,14 +47,22 @@ h3 {
 }
 /* ***************************** */
 .confessPost {
-  width: max(30%, 400px);
-  min-height: 400px;
+  min-width: 450px;
+  min-height: 500px;
+  max-width: 600px;
   background-color: #404040;
   color: white;
   position: relative;
+  line-height: 1.2;
+  letter-spacing: 0.5px;
+  font-size: 1.8rem;
+  padding: 1rem;
+  padding-block-end: 2.5rem;
+  font-family: "Source Sans Pro", sans-serif;
+  margin-bottom: 1rem;
 }
 .confessPost .logo {
-  color: hsl(240, 30%, 61%);
+  color: hksl(240, 30%, 61%);
   position: absolute;
   display: block;
   bottom: -10px;
@@ -62,18 +70,39 @@ h3 {
   transform: translate(-50%, -50%);
   opacity: 0.5;
   font-size: 2rem;
+  text-align: justify;
 
-  font-family: "Love Ya Like A Sister", cursive;
+  font-family: sans-serif;
 }
-.confessPost .textBox {
+/* .confessPost .textBox {
   display: block;
   width: 100%;
   min-height: 400px;
-  height: min-content;
+  max-width: 500px;
+  line-height: 1.3;
   letter-spacing: 0.5px;
-  font-size: 1.7rem;
+  font-size: 1.8rem;
   padding: 1rem;
   padding-block-end: 2.5rem;
+  font-family: "Catamaran";
+  background-color: red;
+} */
+.textArea {
+  display: block;
+
+  min-width: 400px;
+  min-height: 400px;
+  line-height: 1.2;
+  letter-spacing: 0.4px;
+  font-size: 2.2rem;
+  padding: 1rem;
+  padding-block-end: 2.5rem;
+  font-family: "Source Sans Pro", sans-serif;
+
+  resize: none;
+  background-color: #404040;
+  width: max(30%, 450px);
+  color: white;
 }
 
 .confessPost .textBox:focus {
@@ -85,7 +114,9 @@ h3 {
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
 }
+
 .loaderBox {
   display: grid;
   height: 57vh;
@@ -96,16 +127,14 @@ h3 {
   text-align: center;
 }
 .msgBox {
-  position: relative;
-  bottom: -2rem;
   background-color: rgb(4, 255, 4);
   width: 500px;
   height: 70px;
-  left: 33.5%;
   font-size: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
   gap: 1rem;
   border-radius: 0.8rem;
   font-weight: normal;
@@ -120,7 +149,19 @@ h3 {
   width: 5rem;
   display: inline-grid;
   place-content: center;
+  margin-right: -2rem;
 }
+.msgContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  top: 100%;
+  animation: swipe 200ms cubic-bezier(0.215, 0.61, 0.355, 1) forwards;
+}
+
 .msgBox::before {
   content: "";
   width: 100%;
@@ -129,11 +170,16 @@ h3 {
   position: absolute;
   bottom: 0;
   transform: translateX(-100%);
-  animation: load 3s ease-in-out forwards;
+  animation: load 3s ease-in-out forwards alternate-reverse;
+}
+@keyframes swipe {
+  to {
+    top: 80%;
+  }
 }
 @keyframes load {
   to {
-    transform: translateX(0);
+    transform: translateX(0%);
   }
 }
 @media (max-width: 400px) {
@@ -145,10 +191,15 @@ h3 {
     /* bottom: 20rem; */
     font-size: 1.4rem;
     width: 100%;
-    left: 0px;
+
     height: 70px;
   }
   h1 {
     font-size: 1.5rem;
+  }
+}
+@media screen and (max-width: 900px) {
+  .msgBox {
+    /* right: 10%; */
   }
 }

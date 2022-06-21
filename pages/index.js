@@ -4,14 +4,21 @@ import Image from "next/image";
 
 export default function Home({ apiEndpoint }) {
   const mainElement = useRef();
-  const [ConfessText, setConfessText] = useState("Confess Here...");
+  const textPreview = useRef();
+  const [ConfessText, setConfessText] = useState("Preview");
   const [Loading, setLoading] = useState(false);
   const [ShowMessage, setShowMessage] = useState(false);
   const [SubmittedMessage, setSubmittedMessage] = useState("Submit");
 
   const handleSubmit = async () => {
+    // ********Maintaining the aspect ratio**********
+    mainElement.current.style.width =
+      0.8 * mainElement.current.clientHeight + "px";
+
+    // mainElement.current.style.aspectRatio = "4/5";s
     let dataUrl = await toPng(mainElement.current);
 
+    // mainElement.current.style.width = "450px !important";
     // ***********POSTING TO CLOUDINARY**************
     setLoading(true);
 
@@ -68,33 +75,41 @@ export default function Home({ apiEndpoint }) {
           </div>
         ) : (
           <div className="main">
+            <textarea
+              className="textArea"
+              onChange={(e) => {
+                setConfessText(e.target.value);
+              }}
+              placeholder="Confess Here..."
+            ></textarea>
+            {(SubmittedMessage !== "Submitted" ? true : false) && (
+              <button
+                onClick={handleSubmit}
+                disabled={
+                  Loading || (SubmittedMessage === "Submitted" ? true : false)
+                }
+              >
+                {SubmittedMessage}
+              </button>
+            )}
+            <br />
+            <br />
+            <br />
+            <h2>Preview..</h2>
             <div className="confessPost" ref={mainElement}>
               <span className="logo">@confess_gyanodaya</span>
-              <div
-                type="text"
-                contentEditable={true}
-                suppressContentEditableWarning={true}
-                className="textBox"
-                onFocus={() => setConfessText("")}
-              >
-                {ConfessText}
-              </div>
+              <div type="text" className="textBox" ref={textPreview}></div>
+              {ConfessText}
             </div>
           </div>
         )}
-        {(SubmittedMessage !== "Submitted" ? true : false) && (
-          <button
-            onClick={handleSubmit}
-            disabled={
-              Loading || (SubmittedMessage === "Submitted" ? true : false)
-            }
-          >
-            {SubmittedMessage}
-          </button>
-        )}
+
         {ShowMessage && (
-          <div className="msgBox">
-            <span>&#10003;</span> <p>Submitted</p>
+          <div className="msgContainer">
+            <div className="msgBox">
+              {/* <div className="line"></div> */}
+              <span>&#10003;</span> <p>Submitted</p>
+            </div>
           </div>
         )}
       </div>

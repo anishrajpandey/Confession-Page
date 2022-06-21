@@ -8,7 +8,7 @@
 }
 .imageContainer {
   width: 90%;
-  /* background-color: green; */
+  height: min-content;
   display: flex;
   justify-content: center;
 }
@@ -23,8 +23,94 @@
 .buttonArea :last-child {
   background-color: rgb(222, 51, 51);
 }
+.buttonArea button:disabled {
+  background-color: gray !important;
+  color: gainsboro;
+  cursor: not-allowed;
+}
+.buttonArea button:is(:hover, :active) {
+  filter: brightness(0.8);
+}
+
+.messageBox {
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  text-align: center;
+  bottom: 0;
+  background-color: rgb(184, 184, 184);
+  font-size: 1.7rem;
+}
+.infoBox {
+  width: 100%;
+  height: 40px;
+  position: fixed;
+  display: flex;
+  top: 0;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgb(184, 184, 184);
+  font-size: 1.7rem;
+  padding: 0 1rem;
+}
+.login {
+  width: 60%;
+  margin: 10rem auto;
+  box-shadow: 2px 0px 8px black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 50vh;
+}
+form.loginform {
+  width: 50%;
+}
+.login input {
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+.login button {
+  display: block;
+  width: 100%;
+}
+.errormsg {
+  /* position: absolute; */
+  margin: auto;
+  margin-top: -5rem;
+  /* padding: 1.5rem 18rem; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.3rem;
+  background-color: rgb(255, 0, 51);
+  color: white;
+  width: 60%;
+  height: 70px;
+}
+.adminMessage {
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  place-content: center;
+  font-size: 3rem;
+}
 @media (max-width: 500px) {
   .buttonArea {
     width: 90%;
+  }
+  form.loginform {
+    width: 100%;
+  }
+  .login {
+    width: 100%;
+    padding: 1rem;
+  }
+  .infoBox {
+    font-size: 1rem;
+    outline: 2px;
   }
 }
