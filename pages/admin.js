@@ -38,7 +38,7 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
     let { id } = await media.json();
     console.log(id);
 
-    //posting with media_id
+    //posting with media_id ok
     await fetch(
       `https://graph.facebook.com/v14.0/17841451771977639/media_publish?creation_id=${id}&access_token=${at}`,
       { method: "POST" }
