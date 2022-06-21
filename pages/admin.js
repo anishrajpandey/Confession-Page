@@ -57,7 +57,6 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
       headers: {
         "Content-Type": "application/json",
       },
-      s,
     });
     let { url } = await data.json();
     postToInstagram(url);
