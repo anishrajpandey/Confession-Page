@@ -50,8 +50,8 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
   const handleAccept = async (e) => {
     setMessage("Posting");
 
-    document.body.style.pointerEvents = "none";
-    document.body.style.opacity = "0.5";
+    e.target.parentElement.parentElement.style.pointerEvents = "none";
+    e.target.parentElement.parentElement.style.opacity = "0.5";
     const id = e.target.parentElement.parentElement.id;
 
     let data = await fetch(updateApiEndpoint, {
@@ -64,11 +64,12 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
     let { url } = await data.json();
     postToInstagram(url);
 
-    document.body.style.pointerEvents = "all";
-    document.body.style.opacity = "1";
-    setMessage("Posted");
-
-    setTimeout(() => setMessage(""), 3000);
+    setTimeout(() => {
+      e.target.parentElement.parentElement.style.pointerEvents = "all";
+      e.target.parentElement.parentElement.style.display = "none";
+      setMessage("Posted");
+    }, 3000);
+    setMessage("");
   };
 
   const handleReject = async (e) => {
