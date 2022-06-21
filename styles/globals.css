@@ -47,7 +47,9 @@ h3 {
 }
 /* ***************************** */
 .confessPost {
-  min-width: 450px;
+  /* display: none; */
+  /* visibility: hidden; */
+  width: 450px;
   min-height: 500px;
   max-width: 600px;
   background-color: #404040;
@@ -78,7 +80,7 @@ h3 {
 .textArea {
   display: block;
 
-  min-width: 400px;
+  width: 400px;
   min-height: 400px;
   line-height: 1.2;
   letter-spacing: 0.4px;
@@ -89,7 +91,7 @@ h3 {
 
   resize: none;
   background-color: #404040;
-  width: max(30%, 450px);
+  /* width: max(30%, 450px); */
   color: white;
 }
 
@@ -172,8 +174,16 @@ h3 {
 }
 @media (max-width: 400px) {
   .confessPost,
+  button,
+  .textArea {
+    width: 95%;
+    margin: 0 auto;
+  }
   button {
-    width: 100%;
+    margin: 1rem 0;
+  }
+  .confessPost {
+    min-width: none !important;
   }
   .msgBox {
     /* bottom: 20rem; */
@@ -185,10 +195,8 @@ h3 {
   h1 {
     font-size: 1.5rem;
   }
-  .confessPost,
-  .textArea {
-    width: 100vw;
-    margin: auto;
+  .confessPost .logo {
+    font-size: 1.3rem;
   }
 }
 @media screen and (max-width: 900px) {
