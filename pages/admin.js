@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./../styles/admin.module.css";
 // import { set } from "mongoose";
 
-const Admin = ({ apiEndpoint, updateApiEndpoint, at, uid, pass }) => {
+const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
   const [PostList, setPostList] = useState([]);
   const [Message, setMessage] = useState("");
   const [Limit, setLimit] = useState(0);
@@ -84,8 +84,8 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at, uid, pass }) => {
     setMessage("Rejected");
     setTimeout(() => setMessage(""), 1000);
   };
-  const [UserName, setUserName] = useState("");
-  const [Password, setPassword] = useState("");
+  // const [UserName, setUserName] = useState("");
+  // const [Password, setPassword] = useState("");
   const [authenticated, setauthenticated] = useState("");
   const handleUserChange = (e) => {
     setUserName(e.target.value);
@@ -93,14 +93,14 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at, uid, pass }) => {
   const handlePassworChange = (e) => {
     setPassword(e.target.value);
   };
-  const isAuthenticated = (e) => {
-    e.preventDefault();
-    if (uid === UserName && pass === Password) {
-      setauthenticated(true);
-    } else {
-      setauthenticated(false);
-    }
-  };
+  // const isAuthenticated = (e) => {
+  //   e.preventDefault();
+  //   if (uid === UserName && pass === Password) {
+  //     setauthenticated(true);
+  //   } else {
+  //     setauthenticated(false);
+  //   }
+  // };
   return (
     <>
       {/* {!authenticated && (
@@ -176,8 +176,6 @@ export async function getServerSideProps() {
       apiEndpoint: process.env.POST_API_ENDPOINT,
       updateApiEndpoint: process.env.UPDATE_API_ENDPOINT,
       at: process.env.ACCESS_TOKEN,
-      uid: process.env.ADMIN_ID,
-      pass: process.env.ADMIN_PASS,
     },
   };
 }
