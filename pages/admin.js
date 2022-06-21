@@ -17,7 +17,7 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
   useEffect(() => {
     fetchData();
     fetchLimitData();
-  }, [Message]);
+  }, []);
   const fetchLimitData = async () => {
     let resp = await fetch(
       `https://graph.facebook.com/v14.0/17841451771977639/content_publishing_limit?access_token=${at}`
@@ -28,7 +28,7 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
   };
   const postToInstagram = async (url, caption = "") => {
     //CREATING MEAIA CONTAINER
-    console.log(url);
+
     let media = await fetch(
       `https://graph.facebook.com/v14.0/17841451771977639/media?image_url=${url}&caption=${caption}&access_token=${at}`,
       {
@@ -38,11 +38,14 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
     let { id } = await media.json();
     console.log(id);
 
-    //posting with media_id
-    await fetch(
+    // posting with media_id
+    const result = await fetch(
       `https://graph.facebook.com/v14.0/17841451771977639/media_publish?creation_id=${id}&access_token=${at}`,
       { method: "POST" }
     );
+    let jsonres = await result.json();
+    console.log(jsonres);
+    console.log("Successfully posted");
   };
   const handleAccept = async (e) => {
     setMessage("Posting");
