@@ -107,7 +107,6 @@ export default function Home({ apiEndpoint }) {
         {ShowMessage && (
           <div className="msgContainer">
             <div className="msgBox">
-              {/* <div className="line"></div> */}
               <span>&#10003;</span> <p>Submitted</p>
             </div>
           </div>
