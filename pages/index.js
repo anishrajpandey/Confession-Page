@@ -114,7 +114,7 @@ export default function Home({ apiEndpoint }) {
       </div>
     </>
   );
-  // hello my na,
+  // hello my n
 }
 
 export async function getServerSideProps() {
