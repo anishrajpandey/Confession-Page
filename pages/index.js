@@ -15,10 +15,8 @@ export default function Home({ apiEndpoint }) {
     mainElement.current.style.width =
       0.8 * mainElement.current.clientHeight + "px";
 
-    // mainElement.current.style.aspectRatio = "4/5";s
     let dataUrl = await toPng(mainElement.current);
 
-    // mainElement.current.style.width = "450px !important";
     // ***********POSTING TO CLOUDINARY**************
     setLoading(true);
 
@@ -71,7 +69,7 @@ export default function Home({ apiEndpoint }) {
               width="200"
               height="200"
             ></Image>
-            <h2>POSTING....</h2>
+            <h2>POSTING...</h2>
           </div>
         ) : (
           <div className="main">
@@ -114,7 +112,6 @@ export default function Home({ apiEndpoint }) {
       </div>
     </>
   );
-  // hello my
 }
 
 export async function getServerSideProps() {

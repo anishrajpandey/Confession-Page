@@ -26,8 +26,13 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
 
     setLimit(data[0].quota_usage);
   };
-  const postToInstagram = async (url, caption = "") => {
-    //CREATING MEAIA CONTAINER
+  const postToInstagram = async (url, e, caption = "") => {
+    setMessage("Posting");
+
+    e.target.parentElement.parentElement.style.pointerEvents = "none";
+    e.target.parentElement.parentElement.style.opacity = "0.5";
+
+    // CREATING MEAIA CONTAINER
 
     let media = await fetch(
       `https://graph.facebook.com/v14.0/17841451771977639/media?image_url=${url}&caption=${caption}&access_token=${at}`,
@@ -46,14 +51,12 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
     let jsonres = await result.json();
     console.log(jsonres);
     console.log("Successfully posted");
+    e.target.parentElement.parentElement.style.pointerEvents = "all";
+    e.target.parentElement.parentElement.style.display = "none";
+    setMessage("Posted");
   };
   const handleAccept = async (e) => {
-    setMessage("Posting");
-
-    e.target.parentElement.parentElement.style.pointerEvents = "none";
-    e.target.parentElement.parentElement.style.opacity = "0.5";
     const id = e.target.parentElement.parentElement.id;
-
     let data = await fetch(updateApiEndpoint, {
       method: "POST",
       body: JSON.stringify({ id: id, shouldReturnUrlAsAResponse: true }),
@@ -62,14 +65,11 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
       },
     });
     let { url } = await data.json();
-    postToInstagram(url);
+    await postToInstagram(url, e);
 
     setTimeout(() => {
-      e.target.parentElement.parentElement.style.pointerEvents = "all";
-      e.target.parentElement.parentElement.style.display = "none";
-      setMessage("Posted");
-    }, 3000);
-    setMessage("");
+      setMessage("");
+    }, 1000);
   };
 
   const handleReject = async (e) => {
