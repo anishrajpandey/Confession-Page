@@ -1,4 +1,4 @@
-import { toPng, toJpeg } from "html-to-image";
+import { toPng } from "html-to-image";
 import { useRef, useState } from "react";
 import Image from "next/image";
 
@@ -60,7 +60,7 @@ export default function Home({ apiEndpoint }) {
   return (
     <>
       <div className="container">
-        <h1>Gyanodaya confession Page</h1>
+        <h1>Gyanodaya Confession Page</h1>
         {Loading ? (
           <div className="loaderBox">
             <Image
