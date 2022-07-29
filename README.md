@@ -1,1 +1,1 @@
-https://confessgyanodaya.vercel.app
+Live: https://confessgyanodaya.vercel.app
