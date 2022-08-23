@@ -1,6 +1,7 @@
 import { toPng } from "html-to-image";
 import { useRef, useState } from "react";
 import Image from "next/image";
+import Head from "next/head";
 
 export default function Home({ apiEndpoint }) {
   const mainElement = useRef();
@@ -59,6 +60,9 @@ export default function Home({ apiEndpoint }) {
 
   return (
     <>
+      <Head>
+        <title>Confess anything...</title>
+      </Head>
       <div className="container">
         <h1>Gyanodaya Confession Page</h1>
         {Loading ? (
