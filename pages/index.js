@@ -97,7 +97,7 @@ export default function Home({ apiEndpoint }) {
             <br />
             <br />
             <br />
-            <h2>Preview..</h2>
+            <h2>Preview...</h2>
             <div className="confessPost" ref={mainElement}>
               <span className="logo">@confess_gyanodaya</span>
               <div type="text" className="textBox" ref={textPreview}></div>
