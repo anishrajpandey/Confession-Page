@@ -111,7 +111,6 @@ export default function Home({ apiEndpoint }) {
             <div className="msgBox">
               <span>&#10003;</span> <p>Submitted</p>
             </div>
-            {/* hello world this is   */}
           </div>
         )}
       </div>
