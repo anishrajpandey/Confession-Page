@@ -3,7 +3,7 @@ import Image from "next/image";
 import styles from "./../styles/admin.module.css";
 // import { set } from "mongoose";
 
-const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
+const Admin = ({ apiEndpoint, updateApiEndpoint, at, atfacebook }) => {
   const [PostList, setPostList] = useState([]);
   const [Message, setMessage] = useState("");
   const [Limit, setLimit] = useState(0);
@@ -50,10 +50,17 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
     );
     let jsonres = await result.json();
     console.log(jsonres);
-    console.log("Successfully posted");
+  };
+  const postToFaceBook = async (url, e) => {
+    let response = await fetch(
+      `https://graph.facebook.com/107190538561837/photos?url=${url}&access_token=${atfacebook}`,
+      {
+        method: "POST",
+      }
+    );
+
     e.target.parentElement.parentElement.style.pointerEvents = "all";
     e.target.parentElement.parentElement.style.display = "none";
-    setMessage("Posted");
   };
   const handleAccept = async (e) => {
     const id = e.target.parentElement.parentElement.id;
@@ -66,6 +73,8 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at }) => {
     });
     let { url } = await data.json();
     await postToInstagram(url, e);
+    await postToFaceBook(url, e);
+    setMessage("Posted to Instagram and facebook");
 
     setTimeout(() => {
       setMessage("");
@@ -179,6 +188,7 @@ export async function getServerSideProps() {
       apiEndpoint: process.env.POST_API_ENDPOINT,
       updateApiEndpoint: process.env.UPDATE_API_ENDPOINT,
       at: process.env.ACCESS_TOKEN,
+      atfacebook: process.env.FACEBOOK_ACCESS_TOKEN,
     },
   };
 }
