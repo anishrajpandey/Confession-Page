@@ -1,12 +1,12 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Image from "next/image";
 import styles from "./../styles/admin.module.css";
-// import { set } from "mongoose";
 
 const Admin = ({ apiEndpoint, updateApiEndpoint, at, atfacebook }) => {
   const [PostList, setPostList] = useState([]);
   const [Message, setMessage] = useState("");
   const [Limit, setLimit] = useState(0);
+  const mainBodyref = useRef(null);
   const fetchData = async () => {
     let data = await fetch(apiEndpoint);
     let res = await data.json();
@@ -27,11 +27,6 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at, atfacebook }) => {
     setLimit(data[0].quota_usage);
   };
   const postToInstagram = async (url, e, caption = "") => {
-    setMessage("Posting");
-
-    e.target.parentElement.parentElement.style.pointerEvents = "none";
-    e.target.parentElement.parentElement.style.opacity = "0.5";
-
     // CREATING MEAIA CONTAINER
 
     let media = await fetch(
@@ -58,12 +53,16 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at, atfacebook }) => {
         method: "POST",
       }
     );
-
-    e.target.parentElement.parentElement.style.pointerEvents = "all";
-    e.target.parentElement.parentElement.style.display = "none";
   };
   const handleAccept = async (e) => {
+    setMessage("Posting");
     const id = e.target.parentElement.parentElement.id;
+    e.target.parentElement.parentElement.parentElement.style.pointerEvents =
+      "none";
+    e.target.parentElement.parentElement.parentElement.style.opacity = "0.85";
+
+    mainBodyref.current.style.overflow = "hidden";
+
     let data = await fetch(updateApiEndpoint, {
       method: "POST",
       body: JSON.stringify({ id: id, shouldReturnUrlAsAResponse: true }),
@@ -72,8 +71,13 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at, atfacebook }) => {
       },
     });
     let { url } = await data.json();
+
     await postToInstagram(url, e);
     await postToFaceBook(url, e);
+    e.target.parentElement.parentElement.parentElement.style.pointerEvents =
+      "all";
+    e.target.parentElement.parentElement.parentElement.style.opacity = "1";
+
     setMessage("Posted to Instagram and facebook");
 
     setTimeout(() => {
@@ -136,7 +140,7 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at, atfacebook }) => {
         </div>
       )} */}
       {/* {authenticated === true && ( */}
-      <main className={styles.mainBody}>
+      <main className={styles.mainBody} ref={mainBodyref}>
         {PostList.map((elem) => {
           return (
             elem.isPending && (

@@ -1,5 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro&display=swap");
-
+@import url("https://fonts.googleapis.com/css2?family=Baloo+Da+2&display=swap");
 html,
 body {
   padding: 0;
@@ -53,24 +52,28 @@ h3 {
   min-height: 500px;
   max-width: 600px;
   /* todo */
-  background-color: #404040;
+  /* background-color: #ff0000; */
   /* background-color: #bababa; */
   /* color: rgb(0, 0, 0); */
-  color: white;
+  color: rgb(0, 0, 0);
   position: relative;
   line-height: 1.2;
   letter-spacing: 0.5px;
   font-size: 1.6rem;
   padding: 1rem;
+  padding-block-start: 1.5rem;
+  font-weight: 600;
   padding-block-end: 2.5rem;
-  font-family: "Source Sans Pro", sans-serif;
+  font-family: "Baloo Da 2", sans-serif;
   margin-bottom: 1rem;
+  background-image: url("/background.jpg");
+  background-size: cover;
 }
 .confessPost .logo {
   color: hsl(240, 30%, 61%);
   /* todo */
   /* color: rgb(46, 46, 46); */
-  color: white;
+  color: rgb(0, 0, 0);
   position: absolute;
   display: block;
   bottom: -10px;
