@@ -52,7 +52,10 @@ h3 {
   width: 450px;
   min-height: 500px;
   max-width: 600px;
+  /* todo */
   background-color: #404040;
+  /* background-color: #bababa; */
+  /* color: rgb(0, 0, 0); */
   color: white;
   position: relative;
   line-height: 1.2;
@@ -65,13 +68,16 @@ h3 {
 }
 .confessPost .logo {
   color: hsl(240, 30%, 61%);
+  /* todo */
+  /* color: rgb(46, 46, 46); */
+  color: white;
   position: absolute;
   display: block;
   bottom: -10px;
   left: 50%;
   transform: translate(-50%, -50%);
   opacity: 0.5;
-  font-size: 1.5rem;
+  font-size: 1.6rem;
   text-align: justify;
 
   font-family: sans-serif;

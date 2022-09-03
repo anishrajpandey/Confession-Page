@@ -136,7 +136,7 @@ const Admin = ({ apiEndpoint, updateApiEndpoint, at, atfacebook }) => {
         </div>
       )} */}
       {/* {authenticated === true && ( */}
-      <main>
+      <main className={styles.mainBody}>
         {PostList.map((elem) => {
           return (
             elem.isPending && (

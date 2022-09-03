@@ -1,3 +1,13 @@
+main.mainBody {
+  background-color: #e5e5f7;
+
+  background-image: repeating-radial-gradient(
+      circle at 0 0,
+      transparent 0,
+      #e5e5f7 40px
+    ),
+    repeating-linear-gradient(#444cf755, #444cf7);
+}
 .container {
   width: 100%;
   height: fit-content;
@@ -38,7 +48,7 @@
   position: fixed;
   text-align: center;
   bottom: 0;
-  background-color: rgb(184, 184, 184);
+  background-color: rgb(191, 146, 255);
   font-size: 1.7rem;
 }
 .infoBox {
@@ -48,8 +58,8 @@
   display: flex;
   top: 0;
   justify-content: space-between;
-  align-items: center;
-  background-color: rgb(184, 184, 184);
+  background-color: rgb(191, 146, 255);
+
   font-size: 1.7rem;
   padding: 0 1rem;
 }
