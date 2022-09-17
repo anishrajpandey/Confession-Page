@@ -1,1 +1,1 @@
-Live: https://confessgyanodaya.vercel.app/
+DbLive: https://confessgyanodaya.vercel.app/
